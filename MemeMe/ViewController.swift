@@ -31,13 +31,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         
         // add notification for when keyboard is about to show
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:",
+            name: UIKeyboardWillShowNotification, object: nil)
     }
     
     // MARK: - Notifications
     
     func keyboardWillShow(notification: NSNotification) {
-        println("Keyboard is about to be shown")
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
+        self.view.frame.origin.y -= keyboardSize.CGRectValue().height
     }
 
     // MARK: - Image picker
