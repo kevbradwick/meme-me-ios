@@ -33,12 +33,13 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
         
         let meme = memes[indexPath.row]
         cell.previewImage.image = meme.memedImage
+        cell.memeTitle.text = "\(meme.topText), \(meme.bottomText)"
         
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 72
+        return 120
     }
     
     // MARK: Tableview delegate
