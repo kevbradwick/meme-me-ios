@@ -18,6 +18,7 @@
 		0C5836A71AD2A9C6007122C4 /* MemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5836A61AD2A9C6007122C4 /* MemeManager.swift */; };
 		0C5836A91AD2BBEA007122C4 /* SentMemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5836A81AD2BBEA007122C4 /* SentMemesViewController.swift */; };
 		0C5836AB1AD2BC0C007122C4 /* SentMemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5836AA1AD2BC0C007122C4 /* SentMemesCollectionViewController.swift */; };
+		0C58371D1AD32A7B007122C4 /* MemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58371C1AD32A7B007122C4 /* MemeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		0C5836A61AD2A9C6007122C4 /* MemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeManager.swift; sourceTree = "<group>"; };
 		0C5836A81AD2BBEA007122C4 /* SentMemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesViewController.swift; sourceTree = "<group>"; };
 		0C5836AA1AD2BC0C007122C4 /* SentMemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesCollectionViewController.swift; sourceTree = "<group>"; };
+		0C58371C1AD32A7B007122C4 /* MemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				0C58369B1AD1AE6F007122C4 /* MemeTextField.swift */,
+				0C58371C1AD32A7B007122C4 /* MemeTableViewCell.swift */,
 			);
 			name = Elements;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C5836A91AD2BBEA007122C4 /* SentMemesViewController.swift in Sources */,
+				0C58371D1AD32A7B007122C4 /* MemeTableViewCell.swift in Sources */,
 				0C5836AB1AD2BC0C007122C4 /* SentMemesCollectionViewController.swift in Sources */,
 				0C5836A71AD2A9C6007122C4 /* MemeManager.swift in Sources */,
 				0C58367A1AD12BCA007122C4 /* ViewController.swift in Sources */,
