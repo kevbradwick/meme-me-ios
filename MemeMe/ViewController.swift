@@ -63,6 +63,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 println("Image added to meme manager")
                 self.memeManager.add(topText: self.topText.text, bottomText: self.bottomText.text,
                     originalImage: self.imageView.image!, memedImage: memedImage)
+                
+                self.performSegueWithIdentifier("showMemeHistory", sender: memedImage)
             }
         }
         
