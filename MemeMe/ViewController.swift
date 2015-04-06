@@ -14,6 +14,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topText: MemeTextField!
     @IBOutlet weak var bottomText: MemeTextField!
+    @IBOutlet var activityButton: UIBarButtonItem!
+    
+    var memeManager = MemeManager.sharedInstance()
         
     override func viewDidLoad() {
         
@@ -23,7 +26,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topText.defaultText = "TOP"
         bottomText.defaultText = "BOTTOM"
         
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
         
+        activityButton.enabled = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -37,12 +42,69 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             name: UIKeyboardWillShowNotification, object: nil)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    /*!
+        This will launch the activity view controller with the current Meme image. It will also store the memed image
+        using the shared MemeManager.
+    */
+    @IBAction func launchActivityController() {
+        
+        let memedImage = generateMemedImage()
+        let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        // completion handler will add the meme to the global collection
+        controller.completionHandler = { (activityType, completed: Bool) in
+            if completed == true {
+                println("Image added to meme manager")
+                self.memeManager.add(topText: self.topText.text, bottomText: self.bottomText.text,
+                    originalImage: self.imageView.image!, memedImage: memedImage)
+            }
+        }
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    /*!
+        Reset the controller to the same state as when the app first loads
+    */
+    @IBAction func resetMemeEditor(sender: AnyObject) {
+        
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
+        imageView.image = nil
+        activityButton.enabled = false
+    }
+    
+    /*!
+        Generates a new memed image from the current view.
+    */
+    func generateMemedImage() -> UIImage {
+        
+        // TODO: - Hide toolbar and nav bar
+        
+        // render the current view to an image object
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
+        let memedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return memedImage as UIImage
+    }
+    
     // MARK: - Notifications
     
     func keyboardWillShow(notification: NSNotification) {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
-        self.view.frame.origin.y -= keyboardSize.CGRectValue().height
+        
+        if bottomText.isFirstResponder() {
+            let userInfo = notification.userInfo
+            let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
+            self.view.frame.origin.y -= keyboardSize.CGRectValue().height
+        }
     }
 
     // MARK: - Image picker
@@ -51,6 +113,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imageView.image = image
         imageView.contentMode = .ScaleAspectFill
+        
+        activityButton.enabled = true
         
         dismissViewControllerAnimated(true, completion: nil)
     }
