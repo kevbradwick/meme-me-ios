@@ -16,17 +16,17 @@ class MemeTextField: UITextField, UITextFieldDelegate {
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
-        NSStrokeWidthAttributeName: 2,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
+        NSStrokeWidthAttributeName: -2,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
     ]
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.textAlignment = NSTextAlignment.Center
         self.defaultTextAttributes = memeTextAttributes
         self.backgroundColor = UIColor.clearColor()
         self.borderStyle = .None
+        self.textAlignment = NSTextAlignment.Center
         self.delegate = self
     }
 

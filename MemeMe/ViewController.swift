@@ -22,6 +22,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // default text used to check when deciding to clear field
         topText.defaultText = "TOP"
         bottomText.defaultText = "BOTTOM"
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
