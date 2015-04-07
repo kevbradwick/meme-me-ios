@@ -177,7 +177,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Sent Memes" id="n3Y-91-c5z">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gmc-vt-SCE"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gmc-vt-SCE">
+                                            <connections>
+                                                <action selector="launchMemeEditorViewController:" destination="e26-0N-1fQ" id="31o-iS-mZZ"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -308,7 +312,7 @@
                                     <navigationItem title="Sent Memes" id="wNh-jA-e7P">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="f3y-4u-Ahz">
                                             <connections>
-                                                <action selector="dismissController:" destination="go5-n0-yrD" id="iLP-tw-eLa"/>
+                                                <action selector="launchMemeEditorViewController:" destination="go5-n0-yrD" id="a8R-dK-zI7"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

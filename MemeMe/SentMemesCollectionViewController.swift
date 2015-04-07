@@ -31,4 +31,10 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
         
         return cell
     }
+    
+    @IBAction func launchMemeEditorViewController(sender: AnyObject) {
+        
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as ViewController
+        presentViewController(controller, animated: true, completion: nil)
+    }
 }

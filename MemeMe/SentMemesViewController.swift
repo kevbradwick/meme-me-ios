@@ -51,7 +51,7 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     
-    @IBAction func dismissController(sender: AnyObject) {
+    @IBAction func launchMemeEditorViewController(sender: AnyObject) {
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as ViewController
         presentViewController(controller, animated: true, completion: nil)
