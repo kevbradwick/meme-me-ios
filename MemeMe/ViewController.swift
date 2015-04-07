@@ -26,8 +26,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topText.defaultText = "TOP"
         bottomText.defaultText = "BOTTOM"
         
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
-        
         activityButton.enabled = false
     }
     
@@ -40,6 +38,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // add notification for when keyboard is about to show
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:",
             name: UIKeyboardWillShowNotification, object: nil)
+        
+        // hide the status bar everytime the view is about to appear
+        UIApplication.sharedApplication().statusBarHidden = true
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -118,7 +119,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         activityButton.enabled = true
         
-        dismissViewControllerAnimated(true, completion: nil)
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
