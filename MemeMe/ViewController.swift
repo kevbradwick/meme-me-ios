@@ -115,10 +115,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
         imageView.image = image
-        imageView.contentMode = .ScaleAspectFill
-        
         activityButton.enabled = true
-        
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
