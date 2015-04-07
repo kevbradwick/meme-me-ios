@@ -11,6 +11,7 @@ import UIKit
 class SentMemesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var tableView: UITableView!
+    
     var memes = [Meme]()
     
     override func viewDidLoad() {
@@ -49,4 +50,10 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
         // TODO: - display generated meme
     }
     
+    
+    @IBAction func dismissController(sender: AnyObject) {
+        
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as ViewController
+        presentViewController(controller, animated: true, completion: nil)
+    }
 }

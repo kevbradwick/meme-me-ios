@@ -9,7 +9,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -21,16 +21,19 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97J-k2-5F7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="Pick" id="3uS-YK-N37">
-                                        <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="vXZ-lx-hvc" id="UuI-Hx-1PY"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Camera" id="vUS-uw-Yuq">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rbJ-iA-bPu"/>
+                                    <barButtonItem systemItem="camera" id="vUS-uw-Yuq">
                                         <connections>
                                             <action selector="pickAnImageUsingCamera:" destination="vXZ-lx-hvc" id="n9M-al-0MK"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Kq2-qW-aHn"/>
+                                    <barButtonItem systemItem="organize" id="3uS-YK-N37">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="vXZ-lx-hvc" id="UuI-Hx-1PY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="N0V-dd-Ztr"/>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0Q-IB-wEj">
@@ -180,23 +183,64 @@
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eJx-6B-PJS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rdB-Ft-Z1s">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="137" height="113"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="X8i-Ik-ORg">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCollectionCell" id="X8i-Ik-ORg" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="137" height="113"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IGG-g4-nRy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="IGG-g4-nRy" firstAttribute="top" secondItem="X8i-Ik-ORg" secondAttribute="topMargin" constant="-8" id="66V-I4-ovL"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="IGG-g4-nRy" secondAttribute="trailing" constant="-8" id="L3L-XC-kjf"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="IGG-g4-nRy" secondAttribute="bottom" constant="-8" id="hqc-I8-eyW"/>
+                                            <constraint firstItem="IGG-g4-nRy" firstAttribute="leading" secondItem="X8i-Ik-ORg" secondAttribute="leadingMargin" constant="-8" id="we6-UG-31C"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="IGG-g4-nRy"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <exclude reference="66V-I4-ovL"/>
+                                                <exclude reference="L3L-XC-kjf"/>
+                                                <exclude reference="hqc-I8-eyW"/>
+                                                <exclude reference="we6-UG-31C"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="IGG-g4-nRy"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <include reference="66V-I4-ovL"/>
+                                                <include reference="L3L-XC-kjf"/>
+                                                <include reference="hqc-I8-eyW"/>
+                                                <include reference="we6-UG-31C"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="memeImageView" destination="IGG-g4-nRy" id="UXZ-az-Jd9"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="e26-0N-1fQ" id="jGx-xJ-LZS"/>
+                                    <outlet property="delegate" destination="e26-0N-1fQ" id="Ta4-da-FDz"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -262,7 +306,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Sent Memes" id="wNh-jA-e7P">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="f3y-4u-Ahz"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="f3y-4u-Ahz">
+                                            <connections>
+                                                <action selector="dismissController:" destination="go5-n0-yrD" id="iLP-tw-eLa"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -277,6 +325,9 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3j-Ko-lKe">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="8" width="63" height="103.5"/>
+                                                    </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujj-X8-Pal">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -300,13 +351,13 @@
                                                     <exclude reference="Ujj-X8-Pal"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="aK6-uX-fyw"/>
+                                                    <exclude reference="l7N-Gv-ose"/>
                                                     <exclude reference="DeQ-oV-R60"/>
                                                     <exclude reference="HOx-Rv-AyF"/>
                                                     <exclude reference="IUR-nO-fdm"/>
                                                     <exclude reference="dYe-Ql-2Vz"/>
                                                     <exclude reference="iqe-yK-bbU"/>
-                                                    <exclude reference="aK6-uX-fyw"/>
-                                                    <exclude reference="l7N-Gv-ose"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -315,13 +366,13 @@
                                                     <include reference="Ujj-X8-Pal"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="aK6-uX-fyw"/>
+                                                    <include reference="l7N-Gv-ose"/>
                                                     <include reference="DeQ-oV-R60"/>
                                                     <include reference="HOx-Rv-AyF"/>
                                                     <include reference="IUR-nO-fdm"/>
                                                     <include reference="dYe-Ql-2Vz"/>
                                                     <include reference="iqe-yK-bbU"/>
-                                                    <include reference="aK6-uX-fyw"/>
-                                                    <include reference="l7N-Gv-ose"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
