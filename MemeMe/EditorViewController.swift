@@ -56,7 +56,13 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     */
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        removeRegisteredNotificationObservers()
+    }
+    
+    /*!
+        Remove keyboard notification observers.
+    */
+    private func removeRegisteredNotificationObservers() {
         notificationCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         notificationCenter.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
