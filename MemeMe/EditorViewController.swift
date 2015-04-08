@@ -39,6 +39,9 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:",
             name: UIKeyboardWillShowNotification, object: nil)
         
+        // reset the view when keyboard dissapears
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
         // hide the status bar everytime the view is about to appear
         UIApplication.sharedApplication().statusBarHidden = true
     }
@@ -61,7 +64,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         // completion handler will add the meme to the global collection
         controller.completionHandler = { (activityType, completed: Bool) in
             if completed == true {
-                println("Image added to meme manager")
                 self.memeManager.add(topText: self.topText.text, bottomText: self.bottomText.text,
                     originalImage: self.imageView.image!, memedImage: memedImage)
                 
@@ -108,6 +110,13 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
             let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
             self.view.frame.origin.y -= keyboardSize.CGRectValue().height
         }
+    }
+    
+    /*!
+        Pull the view back down once the keyboard dissapears.
+    */
+    func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
 
     // MARK: - Image picker
