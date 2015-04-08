@@ -76,7 +76,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="EiG-ZP-9Dv">
                                             <connections>
-                                                <action selector="resetMemeEditor:" destination="vXZ-lx-hvc" id="rDP-2T-AhY"/>
+                                                <action selector="showMemeHistory:" destination="vXZ-lx-hvc" id="T76-Bb-VGV"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

@@ -92,12 +92,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     /*!
         Reset the controller to the same state as when the app first loads
     */
-    @IBAction func resetMemeEditor(sender: AnyObject) {
-        
-        topText.text = "TOP"
-        bottomText.text = "BOTTOM"
-        imageView.image = nil
-        activityButton.enabled = false
+    @IBAction func showMemeHistory(sender: AnyObject) {
+        self.performSegueWithIdentifier("showMemeHistory", sender: nil)
     }
     
     /*!
