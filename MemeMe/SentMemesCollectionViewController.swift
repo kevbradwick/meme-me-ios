@@ -12,10 +12,6 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
 
     let memes: [Meme] = MemeManager.sharedInstance().memes
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
@@ -25,6 +21,7 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memeCollectionCell", forIndexPath: indexPath) as MemeCollectionViewCell
         let meme = memes[indexPath.row]
         cell.memeImageView.image = meme.memedImage
@@ -32,6 +29,9 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
         return cell
     }
     
+    /*!
+        Show the meme editor so that they can start over
+    */
     @IBAction func launchMemeEditorViewController(sender: AnyObject) {
         
         let controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as EditorViewController
