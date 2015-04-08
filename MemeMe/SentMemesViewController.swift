@@ -24,6 +24,7 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // MARK: TableView data source
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
@@ -43,14 +44,9 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
         return 120
     }
     
-    // MARK: Tableview delegate
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        // TODO: - display generated meme
-    }
-    
-    
+    /*!
+        launch the meme editor controller so the user can start over.
+    */
     @IBAction func launchMemeEditorViewController(sender: AnyObject) {
         let controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as EditorViewController
         presentViewController(controller, animated: true, completion: nil)

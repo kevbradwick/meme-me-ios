@@ -17,6 +17,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet var activityButton: UIBarButtonItem!
     
     var memeManager = MemeManager.sharedInstance()
+    
+    let notificationCenter = NSNotificationCenter.defaultCenter()
         
     override func viewDidLoad() {
         
@@ -36,20 +38,25 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         
         // add notification for when keyboard is about to show
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:",
+        notificationCenter.addObserver(self, selector: "keyboardWillShow:",
             name: UIKeyboardWillShowNotification, object: nil)
         
-        // reset the view when keyboard dissapears
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        // reset the view when keyboard dissappears
+        notificationCenter.addObserver(self, selector: "keyboardWillHide:",
+            name: UIKeyboardWillHideNotification, object: nil)
         
         // hide the status bar everytime the view is about to appear
         UIApplication.sharedApplication().statusBarHidden = true
     }
     
+    /*!
+        Clean up notification center observers.
+    */
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
     /*!
@@ -124,7 +131,10 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
         imageView.image = image
+        
+        // enable the share button when they've picked an image
         activityButton.enabled = true
+        
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -135,20 +145,24 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     // MARK: - Interface Builder Actions
     
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
-        
-        let controller = UIImagePickerController()
-        controller.sourceType = .PhotoLibrary
-        controller.delegate = self
-        
-        presentViewController(controller, animated: true, completion: nil)
+        launchImagePicker(forSourceType: .PhotoLibrary)
     }
     
+    /*!
+        Launch the camera and use it to capture an image for the meme
+    */
     @IBAction func pickAnImageUsingCamera(sender: AnyObject) {
+        launchImagePicker(forSourceType: .Camera)
+    }
+    
+    /*!
+        Launch the Image Picker controller with different source types.
+    */
+    private func launchImagePicker(forSourceType sourceType: UIImagePickerControllerSourceType) {
         
         let controller = UIImagePickerController()
-        controller.sourceType = .Camera
+        controller.sourceType = sourceType
         controller.delegate = self
-
         presentViewController(controller, animated: true, completion: nil)
     }
 }

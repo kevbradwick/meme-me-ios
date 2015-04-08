@@ -30,11 +30,17 @@ class MemeTextField: UITextField, UITextFieldDelegate {
         self.delegate = self
     }
 
+    /*!
+        When the enter button is hit, then the text field should resign first responder.
+    */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    /*!
+        Simulated placeholder behaviour. Simply clears input if the text present is the default text.
+    */
     func textFieldDidBeginEditing(textField: UITextField) {
         
         if textField.text == defaultText {

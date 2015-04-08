@@ -8,7 +8,10 @@
 
 import UIKit
 
-
+//
+// This class stores memes in memory and can be accessed from 
+// anywhere in the app.
+//
 class MemeManager {
     
     var memes = [Meme]()
