@@ -179,6 +179,8 @@
                         <outlet property="bottomText" destination="GEO-gE-yfi" id="ept-qQ-VNz"/>
                         <outlet property="cameraButton" destination="vUS-uw-Yuq" id="YiC-CX-EvD"/>
                         <outlet property="imageView" destination="H0Q-IB-wEj" id="prm-P7-B0J"/>
+                        <outlet property="navigationBar" destination="xeI-QV-J4S" id="ZrV-Fa-bQm"/>
+                        <outlet property="toolbar" destination="97J-k2-5F7" id="qVa-YZ-wf0"/>
                         <outlet property="topText" destination="Xqr-9L-fl9" id="XtC-pf-2oa"/>
                         <segue destination="QFS-po-X39" kind="presentation" identifier="showMemeHistory" id="Ds1-7G-QYu"/>
                     </connections>

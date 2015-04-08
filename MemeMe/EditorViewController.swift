@@ -15,6 +15,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var topText: MemeTextField!
     @IBOutlet weak var bottomText: MemeTextField!
     @IBOutlet var activityButton: UIBarButtonItem!
+    @IBOutlet var toolbar: UIToolbar!
+    @IBOutlet var navigationBar: UINavigationBar!
     
     var memeManager = MemeManager.sharedInstance()
     
@@ -97,7 +99,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     */
     func generateMemedImage() -> UIImage {
         
-        // TODO: - Hide toolbar and nav bar
+        hideToolbarAndNavigationBar(true)
         
         // render the current view to an image object
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -105,7 +107,14 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         let memedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
+        hideToolbarAndNavigationBar(false)
+        
         return memedImage as UIImage
+    }
+    
+    private func hideToolbarAndNavigationBar(hide: Bool) {
+        toolbar.hidden = hide
+        navigationBar.hidden = hide
     }
     
     // MARK: - Notifications
