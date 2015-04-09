@@ -178,6 +178,7 @@
                         <outlet property="activityButton" destination="IP3-vn-q1q" id="8X6-f9-oo7"/>
                         <outlet property="bottomText" destination="GEO-gE-yfi" id="ept-qQ-VNz"/>
                         <outlet property="cameraButton" destination="vUS-uw-Yuq" id="YiC-CX-EvD"/>
+                        <outlet property="cancelButton" destination="EiG-ZP-9Dv" id="90Y-A4-Jyp"/>
                         <outlet property="imageView" destination="H0Q-IB-wEj" id="prm-P7-B0J"/>
                         <outlet property="navigationBar" destination="xeI-QV-J4S" id="ZrV-Fa-bQm"/>
                         <outlet property="toolbar" destination="97J-k2-5F7" id="qVa-YZ-wf0"/>

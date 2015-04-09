@@ -17,6 +17,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet var activityButton: UIBarButtonItem!
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var navigationBar: UINavigationBar!
+    @IBOutlet var cancelButton: UIBarButtonItem!
     
     var memeManager = MemeManager.sharedInstance()
     
@@ -49,6 +50,11 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         // hide the status bar everytime the view is about to appear
         UIApplication.sharedApplication().statusBarHidden = true
+        
+        // disable the cancel button if there are no memes
+        if memeManager.memes.count == 0 {
+            cancelButton.enabled = false
+        }
     }
     
     /*!
@@ -144,16 +150,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         activityButton.enabled = true
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-//    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-//        
-//        imageView.image = image
-//        
-//        // enable the share button when they've picked an image
-//        activityButton.enabled = true
-//        
-//        picker.dismissViewControllerAnimated(true, completion: nil)
-//    }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
