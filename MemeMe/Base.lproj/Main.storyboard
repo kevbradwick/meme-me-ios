@@ -462,6 +462,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Sent Memes" id="bYT-t6-dax">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="Jhs-lW-lcO">
+                            <connections>
+                                <action selector="editTableRows:" destination="go5-n0-yrD" id="Nmr-Mm-Hi1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rft-KL-eJH">
                             <connections>
                                 <action selector="launchMemeEditorViewController:" destination="go5-n0-yrD" id="P5P-lz-GWJ"/>
@@ -469,6 +474,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="Jhs-lW-lcO" id="eqL-ya-Bjh"/>
                         <outlet property="tableView" destination="2qn-EL-xgK" id="D0T-NT-EDU"/>
                         <segue destination="ub8-H3-eyP" kind="show" identifier="showMeme" id="VW3-ri-ypr"/>
                     </connections>
@@ -540,6 +546,6 @@
         <image name="Table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QzG-Fc-loM"/>
+        <segue reference="VW3-ri-ypr"/>
     </inferredMetricsTieBreakers>
 </document>

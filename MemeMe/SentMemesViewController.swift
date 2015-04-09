@@ -11,6 +11,7 @@ import UIKit
 class SentMemesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var editButton: UIBarButtonItem!
     
     var memes = [Meme]()
     
@@ -57,6 +58,17 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
             memes.removeAtIndex(indexPath.row)
             MemeManager.sharedInstance().memes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+    
+    @IBAction func editTableRows(sender: AnyObject) {
+        
+        if editButton.title! == "Edit" {
+            tableView.editing = true
+            editButton.title = "Cancel"
+        } else {
+            tableView.editing = false
+            editButton.title = "Edit"
         }
     }
     
