@@ -52,6 +52,14 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
         return true
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            memes.removeAtIndex(indexPath.row)
+            MemeManager.sharedInstance().memes.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+    
     /*!
         launch the meme editor controller so the user can start over.
     */

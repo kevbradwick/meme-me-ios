@@ -10,7 +10,12 @@ import UIKit
 
 class SentMemesCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    let memes: [Meme] = MemeManager.sharedInstance().memes
+    var memes = [Meme]()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        memes = MemeManager.sharedInstance().memes
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
