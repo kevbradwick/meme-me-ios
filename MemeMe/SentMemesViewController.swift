@@ -17,9 +17,6 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         memes = MemeManager.sharedInstance().memes
     }
     
@@ -31,7 +28,7 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("memeTableCell") as MemeTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("memeTableCell") as! MemeTableViewCell
         
         let meme = memes[indexPath.row]
         cell.previewImage.image = meme.memedImage
@@ -45,10 +42,27 @@ class SentMemesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     /*!
+        Launch the segue passing the selected meme as the sender
+    */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("showMeme", sender: memes[indexPath.row])
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    /*!
         launch the meme editor controller so the user can start over.
     */
     @IBAction func launchMemeEditorViewController(sender: AnyObject) {
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as EditorViewController
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! EditorViewController
         presentViewController(controller, animated: true, completion: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let controller = segue.destinationViewController as! DetailViewController
+        controller.meme = sender! as? Meme
+    }
+ 
 }

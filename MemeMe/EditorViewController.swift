@@ -77,7 +77,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         
         // completion handler will add the meme to the global collection
-        controller.completionHandler = { (activityType, completed: Bool) in
+        controller.completionWithItemsHandler = { (activityType: String!, completed: Bool, returnedItems: [AnyObject]!, error: NSError!) in
             if completed == true {
                 self.memeManager.add(topText: self.topText.text, bottomText: self.bottomText.text,
                     originalImage: self.imageView.image!, memedImage: memedImage)
@@ -125,7 +125,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         if bottomText.isFirstResponder() {
             let userInfo = notification.userInfo
-            let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
+            let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
             self.view.frame.origin.y -= keyboardSize.CGRectValue().height
         }
     }
@@ -139,15 +139,21 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     // MARK: - Image picker
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         imageView.image = image
-        
-        // enable the share button when they've picked an image
         activityButton.enabled = true
-        
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+//    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+//        
+//        imageView.image = image
+//        
+//        // enable the share button when they've picked an image
+//        activityButton.enabled = true
+//        
+//        picker.dismissViewControllerAnimated(true, completion: nil)
+//    }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)

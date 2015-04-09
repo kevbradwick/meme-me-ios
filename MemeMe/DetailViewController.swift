@@ -15,8 +15,9 @@ class DetailViewController: UIViewController {
     var meme: Meme?
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
+        super.viewWillAppear(animated)
+
         if let meme = self.meme {
             memeImageView.image = meme.memedImage
         }

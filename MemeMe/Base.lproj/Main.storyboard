@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -239,7 +239,6 @@
                                         </variation>
                                         <connections>
                                             <outlet property="memeImageView" destination="IGG-g4-nRy" id="UXZ-az-Jd9"/>
-                                            <segue destination="ub8-H3-eyP" kind="show" id="eQZ-Xy-e7d"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -251,20 +250,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eJx-6B-PJS" firstAttribute="top" secondItem="Luu-pU-hgz" secondAttribute="bottom" id="BF8-k1-5G1"/>
-                            <constraint firstItem="eJx-6B-PJS" firstAttribute="leading" secondItem="1Aw-Pn-YNK" secondAttribute="leadingMargin" constant="-16" id="G63-Lt-xAw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eJx-6B-PJS" secondAttribute="trailing" constant="-16" id="WgD-Ez-p61"/>
-                            <constraint firstItem="zCL-JO-eGd" firstAttribute="top" secondItem="eJx-6B-PJS" secondAttribute="bottom" id="uVS-yk-dp4"/>
+                            <constraint firstItem="eJx-6B-PJS" firstAttribute="top" secondItem="1Aw-Pn-YNK" secondAttribute="topMargin" id="1GJ-kh-vq2"/>
+                            <constraint firstItem="eJx-6B-PJS" firstAttribute="leading" secondItem="1Aw-Pn-YNK" secondAttribute="leadingMargin" constant="-16" id="3ZL-97-h0S"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eJx-6B-PJS" secondAttribute="trailing" constant="-16" id="a6v-bA-zWb"/>
+                            <constraint firstItem="zCL-JO-eGd" firstAttribute="top" secondItem="eJx-6B-PJS" secondAttribute="bottom" id="mNh-oi-zEc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="eJx-6B-PJS"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="BF8-k1-5G1"/>
-                                <exclude reference="G63-Lt-xAw"/>
-                                <exclude reference="WgD-Ez-p61"/>
-                                <exclude reference="uVS-yk-dp4"/>
+                                <exclude reference="mNh-oi-zEc"/>
+                                <exclude reference="1GJ-kh-vq2"/>
+                                <exclude reference="3ZL-97-h0S"/>
+                                <exclude reference="a6v-bA-zWb"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -272,10 +271,10 @@
                                 <include reference="eJx-6B-PJS"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="BF8-k1-5G1"/>
-                                <include reference="G63-Lt-xAw"/>
-                                <include reference="WgD-Ez-p61"/>
-                                <include reference="uVS-yk-dp4"/>
+                                <include reference="mNh-oi-zEc"/>
+                                <include reference="1GJ-kh-vq2"/>
+                                <include reference="3ZL-97-h0S"/>
+                                <include reference="a6v-bA-zWb"/>
                             </mask>
                         </variation>
                     </view>
@@ -286,6 +285,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ub8-H3-eyP" kind="show" identifier="showMeme" id="QzG-Fc-loM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uuz-dA-ZO9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -303,7 +305,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QOt-mT-p3b">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QOt-mT-p3b">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
                         </subviews>
@@ -346,7 +348,7 @@
             </objects>
             <point key="canvasLocation" x="4123.5" y="290"/>
         </scene>
-        <!--Title-->
+        <!--Sent Memes-->
         <scene sceneID="rL9-UN-Lrt">
             <objects>
                 <viewController id="go5-n0-yrD" customClass="SentMemesViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -373,7 +375,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujj-X8-Pal">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -420,10 +422,13 @@
                                         <connections>
                                             <outlet property="memeTitle" destination="Ujj-X8-Pal" id="Zgp-ro-RTM"/>
                                             <outlet property="previewImage" destination="k3j-Ko-lKe" id="iQO-bX-1z0"/>
-                                            <segue destination="ub8-H3-eyP" kind="show" id="FJS-i0-Wp9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="go5-n0-yrD" id="iRY-eK-Epy"/>
+                                    <outlet property="delegate" destination="go5-n0-yrD" id="5Lg-zN-Umd"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -438,10 +443,10 @@
                                 <exclude reference="2qn-EL-xgK"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="fqc-rc-TU1"/>
                                 <exclude reference="C4x-Cw-veP"/>
                                 <exclude reference="FNk-ya-9F1"/>
                                 <exclude reference="G7Y-e0-9ke"/>
-                                <exclude reference="fqc-rc-TU1"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -449,14 +454,14 @@
                                 <include reference="2qn-EL-xgK"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="fqc-rc-TU1"/>
                                 <include reference="C4x-Cw-veP"/>
                                 <include reference="FNk-ya-9F1"/>
                                 <include reference="G7Y-e0-9ke"/>
-                                <include reference="fqc-rc-TU1"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="bYT-t6-dax">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="bYT-t6-dax">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rft-KL-eJH">
                             <connections>
                                 <action selector="launchMemeEditorViewController:" destination="go5-n0-yrD" id="P5P-lz-GWJ"/>
@@ -465,6 +470,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="2qn-EL-xgK" id="D0T-NT-EDU"/>
+                        <segue destination="ub8-H3-eyP" kind="show" identifier="showMeme" id="VW3-ri-ypr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaN-cm-SpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -534,6 +540,6 @@
         <image name="Table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eQZ-Xy-e7d"/>
+        <segue reference="QzG-Fc-loM"/>
     </inferredMetricsTieBreakers>
 </document>

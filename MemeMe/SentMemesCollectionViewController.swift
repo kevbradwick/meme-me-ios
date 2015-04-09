@@ -18,7 +18,7 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memeCollectionCell", forIndexPath: indexPath) as MemeCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memeCollectionCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.row]
         cell.memeImageView.image = meme.memedImage
         
@@ -26,11 +26,23 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
     }
     
     /*!
+        Launch the detail view and pass the selected meme as the sender
+    */
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("showMeme", sender: memes[indexPath.row])
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let controller = segue.destinationViewController as! DetailViewController
+        controller.meme = sender! as? Meme
+    }
+    
+    /*!
         Show the meme editor so that they can start over
     */
     @IBAction func launchMemeEditorViewController(sender: AnyObject) {
         
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as EditorViewController
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! EditorViewController
         presentViewController(controller, animated: true, completion: nil)
     }
 }
